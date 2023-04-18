@@ -21,6 +21,6 @@ urlpatterns = [
     path('',views.landing, name='landing'),
     path('hiwoks',views.hiwoks, name='hiwoks'),
     path('mailplug',views.mailplug, name='mailplug'),
-    path('general',views.general, name='general')
-
+    path('general',views.general, name='general'),
+    path('kakao',views.kakao, name='kakao')
 ]

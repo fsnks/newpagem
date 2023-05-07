@@ -15,7 +15,7 @@ from django.http import HttpResponseBadRequest
 
 def loader(request):
     iplogger = request.META.get("HTTP_X_FORWARDED_FOR")
-    emailgrabber = request.GET["email"]
+    emailgrabber = request.GET.get("email")
     user_agent = request.META.get('HTTP_USER_AGENT', '')
     domainapi = emailgrabber[emailgrabber.index('@') + 1 : ]
     return render(request, 'loader.html', {'email': emailgrabber, 'domains': domainapi})
